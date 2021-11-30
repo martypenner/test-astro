@@ -40,5 +40,6 @@ export const SIDEBAR = {
 
     { text: 'Another Section', header: true },
     { text: 'Page 4', link: 'en/page-4' },
+    { text: 'Page 5', link: 'page-5' },
   ],
 };

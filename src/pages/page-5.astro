@@ -4,12 +4,11 @@ import HeadSEO from "../components/HeadSEO.astro";
 import Header from '../components/Header/Header.astro';
 import PageContent from '../components/PageContent/PageContent.astro';
 import LeftSidebar from '../components/LeftSidebar/LeftSidebar.astro';
-import RightSidebar from '../components/RightSidebar/RightSidebar.astro';
 import * as CONFIG from "../config";
 
 const { content = {} } = Astro.props;
 const currentPage = Astro.request.url.pathname;
-const currentFile = `src/pages${currentPage.replace(/\/$/, "")}.md`;
+const currentFile = `src/pages${currentPage.replace(/\/$/, "")}.astro`;
 const githubEditUrl = CONFIG.GITHUB_EDIT_URL && (CONFIG.GITHUB_EDIT_URL + currentFile);
 ---
 
@@ -108,14 +107,18 @@ const githubEditUrl = CONFIG.GITHUB_EDIT_URL && (CONFIG.GITHUB_EDIT_URL + curren
       <aside id="grid-left" class="grid-sidebar" title="Site Navigation">
         <LeftSidebar currentPage={currentPage} />
       </aside>
-      <div id="grid-main">
-        <PageContent content={content} githubEditUrl={githubEditUrl}>
+      <div id="grid-main" style="position: relative">
+       hi hi hi
+        <!-- <PageContent {content} githubEditUrl={githubEditUrl}>
           <slot />
-        </PageContent>
+        </PageContent> -->
       </div>
-      <aside id="grid-right" class="grid-sidebar" title="Table of Contents">
-        <RightSidebar content={content} githubEditUrl={githubEditUrl} />
-      </aside>
+
+      <script src={import.meta.env.PUBLIC_DIST_PATH}></script>
+
+      <script>
+      $('#grid-main').animate({left:'+=500'}, 3000)
+      </script>
     </main>
   </body>
 </html>
